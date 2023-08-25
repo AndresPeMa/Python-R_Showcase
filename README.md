@@ -17,7 +17,7 @@ are all done in Python and are part of a Dynamic Stochastic Modeling class I too
 
 Files:
 1) Rmarkdown-Code-Replication--2
-2) Rmarkdown-Code-Replication—6
+2) Rmarkdown-Code-Replication--6
 3) Rmarkdown-Code-Replication-9
 
 are all done in R and are part of an Advanced Econometrics I class I took during the fall quarter of 2022 in which we learned R and went over the linear regression model, confidence and prediction intervals, hypothesis testing, the generalized regression model and heteroscedasticity, identification and causal inference: randomization, regression, instrumental variables, regression discontinuity, differences in differences.
