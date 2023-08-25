@@ -1,2 +1,2 @@
 # Python-R_Showcase
-Within this repository, an array of small projects and assignments are contained, each serving as a testament to my proficiency in R and Python programming and markdown. These scripts were developed throughout the duration of my pursuit of a Master of Science in Quantitative Economics at Cal Poly SLO.
+This repository encompasses a collection of compact projects and assignments, each exemplifying my competence in markdown, data science, and data analysis, as well as R and Python programming. These scripts were crafted during my tenure pursuing a Master of Science in Quantitative Economics at Cal Poly SLO, attesting to my skill development across diverse domains.
