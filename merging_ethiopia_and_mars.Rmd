@@ -1,0 +1,306 @@
+---
+title: "merging ethiopia and mars"
+author: "Team"
+date: "2023-05-25"
+output:
+  word_document: default
+  html_document: default
+---
+
+```{r}
+library(dplyr)
+```
+
+```{r}
+# Load in Raw Data with NDVI already appended
+# Load in Renamed Data
+```
+
+```{r}
+# Create new data frames with variables of interest for each respective dataset
+new_heineken <- data.frame(matrix(nrow = 1311))
+new_mars <- data.frame(matrix(nrow = 856))
+```
+
+```{r}
+#Checking which data sets have the exact same columns
+
+# Get the column names of both data frames
+columns_heineken <- colnames(heineken_renamed)
+columns_mars <- colnames(mars_renamed)
+
+# Compare the column names
+common_columns <- intersect(columns_heineken, columns_mars)
+
+print('Common columns:')
+print(common_columns)
+
+# Check if there are any common columns
+has_common_columns <- length(common_columns) > 0
+
+print('Has common columns:')
+print(has_common_columns)
+
+```
+
+### HEINEKEN
+```{r}
+new_heineken["Latitude"] <- heineken_renamed["GPS_Latitude"]
+new_heineken["Longitude"] <- heineken_renamed["GPS_Longitude"]
+new_heineken["DATASET"] <- heineken_renamed["DATASET"]
+# control if 2, treatment if 1
+new_heineken["treat"] <- heineken_renamed["treat"]
+```
+
+```{r}
+# Recoding to match MARS dataset 1 if yes, 2 if no
+heineken_renamed <- heineken_renamed %>%
+  mutate_at(vars(starts_with("fies")), ~ifelse(. == 0, 2, 1))
+```
+
+```{r}
+new_heineken["fies_notenoughfood"] <- heineken_renamed["fies_notenoughfood"]
+new_heineken["fies_eathealthy"] <- heineken_renamed["fies_eathealthy"]
+new_heineken["fies_fewkinds"] <- heineken_renamed["fies_fewkinds"]
+new_heineken["fies_skipmeals"] <- heineken_renamed["fies_skipmeals"]
+new_heineken["fies_ateless"] <- heineken_renamed["fies_ateless"]
+new_heineken["fies_ranout"] <- heineken_renamed["fies_ranout"]
+new_heineken["fies_didnoteat"] <- heineken_renamed["fies_didnoteat"]
+new_heineken["fies_wentwithoutfood"] <- heineken_renamed["fies_wentwithoutfood"]
+
+new_heineken["age"] <- heineken_renamed["age_head"]
+#2 if female, 1 if male
+new_heineken["gender"] <- heineken_renamed["gender_resp"]
+new_heineken["marital"] <- heineken_renamed["marital_status_resp"]
+```
+
+```{r}
+# no attend = 2, attend = 1
+heineken_renamed$training_attend <- ifelse(is.na(heineken_renamed$training_attend), 2, 1)
+new_heineken["training_attend"] <- heineken_renamed["training_attend"]
+```
+
+```{r}
+new_heineken["attend_school"] <- heineken_renamed["attendedschool_head"]
+```
+
+```{r}
+new_heineken["ndvi"] <- everything_ethiopia["ndvi"]
+```
+
+```{r}
+new_heineken['learn'] <- everything_ethiopia['learn']
+```
+
+```{r}
+new_heineken["landuse"] <- heineken_renamed["landuse"]
+```
+
+```{r}
+# farmer uses pesticide = 1, does not = 0
+new_heineken["pesticide"] <- heineken_renamed["pesticide"]
+```
+
+```{r}
+new_heineken["member"] <- heineken_renamed["member_farmergroup"]
+```
+
+```{r}
+# 1 mostly men, 2 men and women equally, 3 mostly women, 4 N/A
+new_heineken["activity_landprep"] <- heineken_renamed["activity_landprep"]
+new_heineken["activity_planting"] <- heineken_renamed["activity_planting"]
+new_heineken["activity_weeding"] <- heineken_renamed["activity_weeding"]
+new_heineken["activity_fertilizing"] <- heineken_renamed["activity_fertilizing"]
+new_heineken["activity_irrigation"] <- heineken_renamed["activity_irrigation"]
+new_heineken["activity_spraychem"] <- heineken_renamed["activity_spraychem"]
+new_heineken["activity_harvesting"] <- heineken_renamed["activity_harvesting"]
+new_heineken["activity_selling"] <- heineken_renamed["activity_selling"]
+new_heineken["activity_buyinginputs"] <- heineken_renamed["activity_buyinginputs"]
+new_heineken["activity_housework"] <- heineken_renamed["activity_housework"]
+```
+
+```{r}
+new_heineken$challenge_efficacy <- raw_barley$f21__2
+new_heineken$challenge_getchem <- raw_barley$f21__3
+new_heineken$challenge_qualityseeds <- raw_barley$f21__4
+new_heineken$challenge_priceseeds <- raw_barley$f21__5
+new_heineken$challenge_getloan <- raw_barley$f21__6
+new_heineken$challenge_affordloan <- raw_barley$f21__7
+new_heineken$challenge_labor <- raw_barley$f21__10
+new_heineken$challenge_costlabor <- raw_barley$f21__11
+new_heineken$challenge_postharv <- raw_barley$f21__14
+new_heineken$challenge_disease <- raw_barley$f21__15
+new_heineken$challenge_pest <- raw_barley$f21__16
+new_heineken$challenge_farmadvise <- raw_barley$f21__17
+new_heineken$challenge_weather <- raw_barley$f21__20
+```
+
+### MARS
+```{r}
+new_mars["Latitude"] <- mars_renamed["Latitude"]
+new_mars["Longitude"] <- mars_renamed["Longitude"]
+new_mars["DATASET"] <- mars_renamed["DATASET"]
+new_mars["treat"] <- mars_renamed["treat"]
+```
+
+```{r}
+# 1 if yes 2 if no
+new_mars["fies_didnoteat"] <- mars_renamed["fies_didnoteat"]
+new_mars["fies_notenoughfood"] <- mars_renamed["fies_notenoughfood"]
+new_mars["fies_eathealthy"] <- mars_renamed["fies_eathealthy"]
+new_mars["fies_fewkinds"] <- mars_renamed["fies_fewkinds"]
+new_mars["fies_skipmeals"] <- mars_renamed["fies_skipmeals"]
+new_mars["fies_ateless"] <- mars_renamed["fies_ateless"]
+new_mars["fies_ranout"] <- mars_renamed["fies_ranout"]
+new_mars["fies_wentwithoutfood"] <- mars_renamed["fies_wentwithoutfood"]
+
+new_mars["age"] <- mars_renamed["age_resp"]
+new_mars["gender"] <- mars_renamed["gender"]
+# 1 if never married, 2 if married, 3 if widower
+new_mars["marital"] <- mars_renamed["marital_status"]
+new_mars["training_attend"] <- mars_renamed["training_attend"]
+```
+
+```{r}
+# Recoding education to be binary
+mars_renamed <- mars_renamed %>%
+  mutate_at(vars(starts_with("head_education")), ~ifelse(. != 0, 1, 2))
+```
+
+```{r}
+new_mars["attend_school"] <- mars_renamed["head_education"]
+```
+
+```{r}
+new_mars["ndvi"] <- mars_raw["ndvi"]
+```
+
+```{r}
+# Creating a "mastery" dependent variable to reflect if the farmer needs training or not. If the farmer mastered over 25 percent of the topics (4/16), then they do not need training (=1) and if they did not, then they do need training (=2) -> 89 percent need training (but could be biased due to NA responses)
+
+# Define columns of interest
+cols_of_interest <- grep("^G3C", names(mars_raw), value = TRUE)
+
+# Fill NAs with 0
+mars_raw[cols_of_interest][is.na(mars_raw[cols_of_interest])] <- 0
+
+# Count the number of 4s and 5s for each row in the columns of interest
+mars_raw$count_4_5 <- rowSums(mars_raw[cols_of_interest] == 4 | mars_raw[cols_of_interest] == 5)
+
+# Create the new variable based on the count
+mars_raw$learn <- ifelse(mars_raw$count_4_5 < 4, 2, 1)
+```
+
+```{r}
+new_mars$learn <- mars_raw$learn
+```
+
+```{r}
+new_mars["landuse"] <- mars_renamed["landuse"]
+```
+
+```{r}
+#Re coding pesticide variable
+mars_renamed$pest_provider_I_do_not_u <- ifelse(is.na(mars_renamed$pest_provider_I_do_not_u), 1, 0)
+```
+
+```{r}
+new_mars["pesticide"] <- mars_renamed["pest_provider_I_do_not_u"]
+```
+
+```{r}
+mars_raw$I5 <- ifelse(mars_raw$I5 == 2, 0, 1)
+```
+
+```{r}
+new_mars["member"] <- mars_raw["I5"]
+```
+
+```{r}
+# 1 men only, 2 mostly men, 3 men and women equally, 4 mostly women, 5 only women, 6 N/A
+for(col_name in names(mars_renamed)) {
+  if(startsWith(col_name, "activity")) {
+    mars_renamed[[col_name]] <- ifelse(mars_renamed[[col_name]] %in% c(1, 2), 1,
+                             ifelse(mars_renamed[[col_name]] == 3, 2,
+                                    ifelse(mars_renamed[[col_name]] %in% c(4, 5), 3,
+                                           ifelse(mars_renamed[[col_name]] == 6, 4, NA))))
+  }
+}
+```
+
+
+```{r}
+new_mars["activity_landprep"] <- mars_renamed["activity_landprep"]
+new_mars["activity_planting"] <- mars_renamed["activity_planting"]
+new_mars["activity_weeding"] <- mars_renamed["activity_weeding"]
+new_mars["activity_fertilizing"] <- mars_renamed["activity_fertilizing"]
+new_mars["activity_irrigation"] <- mars_renamed["activity_irrigation"]
+new_mars["activity_spraychem"] <- mars_renamed["activity_spraychem"]
+new_mars["activity_harvesting"] <- mars_renamed["activity_harvesting"]
+new_mars["activity_selling"] <- mars_renamed["activity_selling"]
+new_mars["activity_buyinginputs"] <- mars_renamed["activity_buyinginputs"]
+new_mars["activity_housework"] <- mars_renamed["activity_housework"]
+```
+
+```{r}
+new_mars$challenge_efficacy <- mars_renamed$challenge_efficacychem
+new_mars$challenge_getchem <- mars_renamed$challenge_getchem
+new_mars$challenge_qualityseeds <- mars_renamed$challenge_qualityseeds
+new_mars$challenge_priceseeds <- mars_renamed$challenge_priceseeds
+new_mars$challenge_getloan <- mars_renamed$challenge_getloan
+new_mars$challenge_affordloan <- mars_renamed$challenge_affordloan
+new_mars$challenge_labor <- mars_renamed$challenge_labor
+new_mars$challenge_costlabor <- mars_renamed$challenge_laborcost
+new_mars$challenge_postharv <- mars_renamed$challenge_postharv
+new_mars$challenge_disease <- mars_renamed$challenge_disease
+new_mars$challenge_pest <- mars_renamed$challenge_pest
+new_mars$challenge_farmadvise <- mars_renamed$challenge_farmadvise
+new_mars$challenge_weather <- mars_renamed$challenge_weather
+```
+
+```{r}
+new_heineken <- new_heineken %>% 
+  select(-1)
+
+new_mars <- new_mars %>% 
+  select(-1)
+
+new_heineken[is.na(new_heineken)] <- 0
+new_mars[is.na(new_mars)] <- 0
+
+new_mars$DATASET <- 1
+new_heineken$DATASET <- 0
+```
+
+```{r}
+# Checking which datasets have the exact same columns
+
+# Get the column names of both dataframes
+columns_heineken <- colnames(new_heineken)
+columns_mars <- colnames(new_mars)
+
+# Compare the column names
+common_columns <- intersect(columns_heineken, columns_mars)
+
+print('Common columns:')
+print(common_columns)
+
+# Check if there are any common columns
+has_common_columns <- length(common_columns) > 0
+
+print('Has common columns:')
+print(has_common_columns)
+```
+
+```{r}
+merged <- rbind(new_mars, new_heineken)
+```
+
+
+```{r}
+write.csv(merged, "/Users/betsyalter/Desktop/merged_heineken_mars.csv", row.names = TRUE)
+```
+
+
+```{r}
+
