@@ -20,4 +20,13 @@ Files:
 2) Rmarkdown-Code-Replication--6
 3) Rmarkdown-Code-Replication-9
 
-are all done in R and are part of an Advanced Econometrics I class I took during the fall quarter of 2022 in which we learned R and went over the linear regression model, confidence and prediction intervals, hypothesis testing, the generalized regression model and heteroscedasticity, identification and causal inference: randomization, regression, instrumental variables, regression discontinuity, differences in differences.
+are all done in R and are part of an Advanced Econometrics I class I took during the fall quarter of 2022 in which we learned R and went over the linear regression model, confidence and prediction intervals, hypothesis testing, the generalized regression model, and heteroscedasticity, identification and causal inference: randomization, regression, instrumental variables, regression discontinuity, differences in differences.
+
+
+Files:
+1) Data mess around
+2) Descriptive Stats
+3) merging_ethiopia_and_mars
+
+are all done in R and are part of the project collaboration with the World Bank Organization. The scripts show data validation used to get an ultimate dataset with all variables of interest and proceed to train and compare machine learning models.  
+
