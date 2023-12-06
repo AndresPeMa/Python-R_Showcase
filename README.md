@@ -2,7 +2,9 @@
 This repository encompasses a collection of compact projects and assignments, each exemplifying my competence in markdown, data science, data analysis, and R and Python programming. These scripts were written while pursuing a Master of Science in Quantitative Economics at Cal Poly SLO, attesting to my skill development across diverse domains.
 
 
-Files: 
+<b>
+Files 
+</b> 
   1) "Bond yields and sell your soul to the Devil"
   2) "Discrete version of McCall and three-period optimization"
   3) "Dynamic Programming with Markov Matrices"
@@ -15,7 +17,7 @@ Files:
 
 are all done in Python and are part of a Dynamic Stochastic Modeling class I took during the winter quarter of 2023 in which we went over finite Markov chains, linear state space models, dynamic programming, rational expectations equilibrium, Markov perfect equilibrium, Stackelberg plans, general equilibrium under certainty and uncertainty, Arrow securities, consumption-based asset pricing, incomplete markets.
 
-Files:
+<b>Files </b>
 1) Rmarkdown-Code-Replication--2
 2) Rmarkdown-Code-Replication--6
 3) Rmarkdown-Code-Replication-9
