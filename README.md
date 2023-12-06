@@ -1,5 +1,5 @@
 # Python-R_Showcase
-This repository encompasses a collection of compact projects and assignments, each exemplifying my competence in markdown, data science, and data analysis, as well as R and Python programming. These scripts were crafted during my time pursuing a Master of Science in Quantitative Economics at Cal Poly SLO, attesting to my skill development across diverse domains.
+This repository encompasses a collection of compact projects and assignments, each exemplifying my competence in markdown, data science, data analysis, and R and Python programming. These scripts were written while pursuing a Master of Science in Quantitative Economics at Cal Poly SLO, attesting to my skill development across diverse domains.
 
 
 Files: 
@@ -8,7 +8,7 @@ Files:
   3) "Dynamic Programming with Markov Matrices"
   4) "Economic Effects of a Year-Long Lockdown"
   5) "Multiplier-accelerator Model; Kernel Estimation Assignment"
-  6) "Parking Problem, and Eating a Magic Cake"
+  6) "Parking Problem and Eating a Magic Cake"
   7) "Practice With Macro Data Assignment"
   8) "Solow Model"
   9) "Working with Markov Chains". 
@@ -28,5 +28,7 @@ Files:
 2) Descriptive Stats
 3) merging_ethiopia_and_mars
 
-are all done in R and are part of the project collaboration with the World Bank Organization. The scripts show data validation used to get an ultimate dataset with all variables of interest and proceed to train and compare machine learning models.  
+are all done in R and are part of the project collaboration with the World Bank Organization. The scripts show data validation used to get an ultimate dataset with all variables of interest and proceed to train and compare machine learning models. 
+
+It is important to note that many of these scripts were collaborative group projects or assignments completed through collective efforts.
 
