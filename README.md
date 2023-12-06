@@ -2,9 +2,7 @@
 This repository encompasses a collection of compact projects and assignments, each exemplifying my competence in markdown, data science, data analysis, and R and Python programming. These scripts were written while pursuing a Master of Science in Quantitative Economics at Cal Poly SLO, attesting to my skill development across diverse domains.
 
 
-<b>
-Files 
-</b> 
+<b>Files </b> 
   1) "Bond yields and sell your soul to the Devil"
   2) "Discrete version of McCall and three-period optimization"
   3) "Dynamic Programming with Markov Matrices"
