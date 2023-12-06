@@ -13,9 +13,7 @@ This repository encompasses a collection of compact projects and assignments, ea
   8) "Solow Model"
   9) "Working with Markov Chains". 
 
-<center>
-  are all done in Python and are part of a Dynamic Stochastic Modeling class I took during the winter quarter of 2023 in which we went over finite Markov chains, linear state space models, dynamic programming, rational expectations equilibrium, Markov perfect equilibrium, Stackelberg plans, general equilibrium under certainty and uncertainty, Arrow securities, consumption-based asset pricing, incomplete markets.
-</center>
+<center>are all done in Python and are part of a Dynamic Stochastic Modeling class I took during the winter quarter of 2023 in which we went over finite Markov chains, linear state space models, dynamic programming, rational expectations equilibrium, Markov perfect equilibrium, Stackelberg plans, general equilibrium under certainty and uncertainty, Arrow securities, consumption-based asset pricing, incomplete markets.</center>
 
 <b>Files </b>
 1) Rmarkdown-Code-Replication--2
